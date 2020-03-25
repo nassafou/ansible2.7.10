@@ -1,0 +1,11 @@
+---
+ - name: "Requete dans une base"
+   hosts: mdb1
+   gather_facts: no
+   tasks:
+     - name: "compte le nombre de pages dans le wiki"
+       count_page:
+         db_name: "mediawiki"
+         request: "select count(*) from page;"
+       register: resultat
+     - debug: var=resultat
