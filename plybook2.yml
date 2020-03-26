@@ -12,7 +12,7 @@
          path: /tmp/myapp/
          state: directory
          mode: 0755
-         ower: uwel
+         owner: uwel
 
      - name: "[TEMPLATE]- create template"
        template:
