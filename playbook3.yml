@@ -1,0 +1,39 @@
+---
+ - name: "[TEST]"
+   hosts: all
+   vars: 
+     - checkmd5: "c1cdaf33772e6ca443d3d55da096536b"
+   tasks:
+     - name: "[TEST] -check md5"
+       stat:
+         path: /tmp/yoz.txt
+         get_checksum: yes
+         checksum_algorithm: md5
+       register: sum5
+
+#     - name: "debug"
+#       debug: 
+#         msg: "{{sum5.stat.checksum }}"
+     - name: "[TEST]- set fact"
+       set_fact: 
+         data: "0"
+       when: sum5.stat.checksum is not defined
+
+     - name: 
+       set_fact: 
+         data: "{{ sum5.stat.checksum}}"
+       when: sum5.stat.checksum is defined
+     
+     - name: "[TEST] - Bloc"
+       block:
+       - name: "[TEST] - copie du fichier"
+         copy:
+           src: ./monfichier.txt
+           dest: /tmp/yoz.txt
+
+       - name: "[TEST] - add mac"
+         lineinfile:
+           path: /tmp/yoz.txt
+           line: 'ajout d une ligne'
+       when: data != checkmd5
+
