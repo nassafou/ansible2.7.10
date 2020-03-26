@@ -1,0 +1,10 @@
+---
+ - name: "[TEST]"
+   hosts: all
+   vars:
+     var1: "playbook1"
+   tasks:
+     - name: "[TEST] - get variable"
+       debug:
+         msg: "{{ var1 }}"
+    
