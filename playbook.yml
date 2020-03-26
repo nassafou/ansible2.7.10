@@ -1,0 +1,26 @@
+---
+ - name: "[TEST]"
+   hosts: all
+   tasks:
+     - name: "[TEST] - copie du fichier"
+       copy:
+         src: ./monfichier.txt
+         dest: /tmp/yoz.txt
+
+     - name: "[TEST] - add mac"
+       lineinfile:
+         path: /tmp/yoz.txt
+         line: 'sed /^xxx/yyy/'
+
+     - name: "[TEST] - add regex"
+       lineinfile:
+         path: /tmp/yoz.txt
+         regexp: '(.*)sed(.*)'
+         line: '\1awk\2'
+         backrefs: yes
+
+     - name: "[TEST] - add regex2"
+       lineinfile:
+         path: /tmp/yoz.txt
+         insertbefore: '(.*)sed(.*)'
+         line: "shell is very fine"

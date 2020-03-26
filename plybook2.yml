@@ -1,0 +1,23 @@
+---
+ - name: "[TEMPLATE]"
+   hosts: all
+   vars:
+      myapp_conf:
+        - "buffer = True"
+        - "memory = 90mb"
+        - "cache  = 1G "
+   tasks: 
+     - name: "[TEMPLATE] -create directory"
+       file:
+         path: /tmp/myapp/
+         state: directory
+         mode: 0755
+         ower: uwel
+
+     - name: "[TEMPLATE]- create template"
+       template:
+         src: myappconf.cfg.j2
+         dest: /tmp/myapp/myappconf.cfg
+         mode: 0755
+         owner: uwel
+
