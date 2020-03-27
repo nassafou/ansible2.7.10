@@ -28,6 +28,8 @@ if [ "$1" == "--create" ];then
   
   # docker run  -tid --name $USER-alpine-$i alpine:latest
    docker run  -tid --cap-add NET_ADMIN --cap-add SYS_ADMIN --publish-all=true -v /srv/data:/srv/html -v /sys/fs/cgroup:/sys/fs/cgroup:ro --name $USER-debian-$i -h $USER-debian-$i registry.gitlab.com/ntyoussouf/imagedock:v1.0
+   # Création du user en cours (password):
+   # script perl de salt: perl -e 'print crypt("password", "salt"),"\n"'
    docker exec -ti $USER-debian-$i /bin/sh -c "useradd -m -p sa3tHJ3/KuYvI $USER"
    # Copier sur chaque conteneur 
    docker exec -ti $USER-debian-$i /bin/sh -c "mkdir ${HOME}/.ssh && chmod 700 ${HOME}/.ssh && chown $USER:$USER $HOME/.ssh"
