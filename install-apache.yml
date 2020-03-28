@@ -1,6 +1,6 @@
 ---
 - name: "Installation apache"
-  hosts: http1
+  hosts: srv2
   roles:
     - role: "apache"
       php_install: yes
