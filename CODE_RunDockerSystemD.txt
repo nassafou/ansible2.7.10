@@ -1,0 +1,3 @@
+docker run -d --name systemd-ubuntu --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro jrei/systemd-ubuntu
+docker exec -it systemd-ubuntu sh
+docker rm -f systemd-ubuntu

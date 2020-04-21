@@ -1,0 +1,5 @@
+PHP is a server-side scripting language
+
+PHP is a open-source language and dl is case-sensitive.
+
+PHP is platform-independent. dl is faster
