@@ -1,0 +1,7 @@
+[web]
+192.168.133.163
+
+[all:vars]
+network_name=test.eni
+ansible_connection=docker
+

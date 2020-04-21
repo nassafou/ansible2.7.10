@@ -1,0 +1,11 @@
+---
+ - name: Installation des serveurs web
+   hosts: web
+   remote_user: root
+
+
+   tasks: 
+     - name: Installation de Git
+       apt: name=git 
+     - name: Install vim
+       apt: name=vim
